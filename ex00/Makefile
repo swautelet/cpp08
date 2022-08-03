@@ -2,7 +2,7 @@ SRC = main.cpp
 NAME = template
 CPPFLAGS = -Werror -Wextra -Wall -std=c++98
 OBJ=$(SRC:%.cpp=%.o)
-HEADER= Array.hpp
+HEADER= easyfind.hpp
 
 all : $(NAME)
 
