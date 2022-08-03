@@ -1,9 +1,11 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
+#include <iostream>
+
 template<class T>
 int	easyfind(T inclass, int ind){
-	for (int i = 0; i < inclass.size(); i++)
+	for (unsigned long int i = 0; i < inclass.size(); i++)
 	{
 		if (inclass[i] == ind)
 		{
