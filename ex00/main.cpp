@@ -20,4 +20,5 @@ int main()
 	{
 		std::cout << "Number found in pos " << res << ", it is " << test[res] << std::endl;
 	}
+	// test with other type of container 
 }
