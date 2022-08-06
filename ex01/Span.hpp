@@ -23,8 +23,8 @@ class Span{
 		};
 		Span& operator =(const Span& copi);
 		void	addNumber(int ind);
-		unsigned int shortestSpan() const;
-		unsigned int longestSpan() const;
+		unsigned int shortestSpan();
+		unsigned int longestSpan();
 		int	getelement(int i) const;
 		int	getactualsize() const;
 		unsigned int	getsize() const;
@@ -44,11 +44,11 @@ class Span{
 
 	protected:
 };
-template <class T>
-void swap (T& a, T& b)
-{
-	T tmp = b;
-	b = a;
-	a = tmp;
-};
+// template <class T>
+// void swap (T& a, T& b)
+// {
+// 	T tmp = b;
+// 	b = a;
+// 	a = tmp;
+// };
 #endif

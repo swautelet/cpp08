@@ -23,6 +23,11 @@ Span::Span(const Span& copi):_size(copi._size)
 }
 Span::Span(std::vector<int>::iterator begin, std::vector<int>::iterator end):_size(distance(begin, end))
 {
+	while(begin != end)
+	{
+		this->addNumber(*begin);
+		begin++;
+	}
 // , _content(distance(begin, end))
 }
 
@@ -63,7 +68,7 @@ const char*	Span::SpantooShort::what() const throw()
 	return ("The Span is too short to compare anything");
 }
 
-unsigned int Span::shortestSpan() const
+unsigned int Span::shortestSpan()
 {
 	if (this->_content.size() < 2)
 	{
@@ -73,15 +78,26 @@ unsigned int Span::shortestSpan() const
 	{
 		unsigned int	shortest = UINT_MAX;
 		std::sort(this->_content.begin(), this->_content.end());
+		std::vector<int>::iterator it(this->_content.begin()), ite(this->_content.end());
 		unsigned int	tmp;
-		for (size_t i = 0; i < this->_content.size() - 1; i++)
+		while(it != ite - 1)
 		{
-			tmp = this->_content[i + 1] - this->_content[i];
+			tmp = *(it + 1) - *it;
+			// std::cout << "tmp = " <<tmp  << "it = " << *it << std::endl;
 			if (tmp < shortest)
 			{
 				shortest = tmp;
 			}
+			it++;
 		}
+		// for (size_t i = 0; i < this->_content.size() - 1; i++)
+		// {
+		// 	tmp = this->_content[i + 1] - this->_content[i];
+		// 	if (tmp < shortest)
+		// 	{
+		// 		shortest = tmp;
+		// 	}
+		// }
 		// for (size_t i = 0; i < this->_content.size(); i++)
 		// {
 		// 	for (size_t j = i + 1; j < this->_content.size(); j++)
@@ -102,7 +118,7 @@ unsigned int Span::shortestSpan() const
 	}
 }
 
-unsigned int Span::longestSpan() const
+unsigned int Span::longestSpan()
 {
 	if (this->_content.size() < 2)
 	{
@@ -110,18 +126,9 @@ unsigned int Span::longestSpan() const
 	}
 	else
 	{
-		unsigned int	longest = 0;
 		std::sort(this->_content.begin(), this->_content.end());
-		unsigned int	tmp;
-		for (size_t i = 0; i < this->_content.size() - 1; i++)
-		{
-			tmp = this->_content[i + 1] - this->_content[i];
-			std::cout << this->_content[i] << "-" << this->_content[i + 1] << std::endl;
-			if (tmp > longest)
-			{
-				longest = tmp;
-			}
-		}
+		// std::cout << 	this->_content.end() << "-" << this->_content.begin() << std::endl;
+		unsigned int	longest = this->_content.back() - this->_content.front();
 		// for (size_t i = 0; i < this->_content.size(); i++)
 		// {
 		// 	for (size_t j = i + 1; j < this->_content.size(); j++)
