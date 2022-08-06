@@ -4,12 +4,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 class Span{
 	public:
 		Span();
 		Span(unsigned int n);
 		Span(const Span& copi);
+		Span(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 		~Span();
 		class SpanFull: public std::exception{
 			public:
@@ -26,15 +28,15 @@ class Span{
 		int	getelement(int i) const;
 		int	getactualsize() const;
 		unsigned int	getsize() const;
-		template < class Iterator >
-		void	addNumber(Iterator begin, Iterator end)
-		{
-			if (this->_content.size() + std::distance(begin, end) > this->_size)
-				throw(SpanFull());
-			else
-				std::copy(begin, end, std::back_inserter(this->_content));
-			// std::sort(this->_content.begin(), this->_content.end());
-		}
+		// template < class Iterator >
+		// void	addNumber(Iterator begin, Iterator end)
+		// {
+		// 	if (this->_content.size() + std::distance(begin, end) > this->_size)
+		// 		throw(SpanFull());
+		// 	else
+		// 		std::copy(begin, end, std::back_inserter(this->_content));
+		// 	// std::sort(this->_content.begin(), this->_content.end());
+		// }
 
 	private:
 		unsigned int _size;
@@ -42,5 +44,11 @@ class Span{
 
 	protected:
 };
-
+template <class T>
+void swap (T& a, T& b)
+{
+	T tmp = b;
+	b = a;
+	a = tmp;
+};
 #endif

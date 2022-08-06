@@ -1,23 +1,29 @@
 #include "Span.hpp"
 
-Span::Span():_size(0)
+Span::Span():_size(0), _content()
 {
 
 }
 
 Span::Span(unsigned int n):_size(n)
 {
+	// , _content(n)
 	// this->_content = new int[n];
 }
 
 Span::Span(const Span& copi):_size(copi._size)
 {
+	// , _content(copi._size)
 	// this->_content = new int(this->_size);
 	// for (int i = 0; i < this->_size; i++)
 	// {
 	// 	this->_content[i] = copi.getelement(i);
 	// }
 	this->_content = copi._content;
+}
+Span::Span(std::vector<int>::iterator begin, std::vector<int>::iterator end):_size(distance(begin, end))
+{
+// , _content(distance(begin, end))
 }
 
 Span::~Span()
@@ -66,22 +72,32 @@ unsigned int Span::shortestSpan() const
 	else
 	{
 		unsigned int	shortest = UINT_MAX;
-		for (size_t i = 0; i < this->_content.size(); i++)
+		std::sort(this->_content.begin(), this->_content.end());
+		unsigned int	tmp;
+		for (size_t i = 0; i < this->_content.size() - 1; i++)
 		{
-			for (size_t j = i + 1; j < this->_content.size(); j++)
+			tmp = this->_content[i + 1] - this->_content[i];
+			if (tmp < shortest)
 			{
-				ssize_t tmp = this->_content[i] - this->_content[j];
-				if (tmp < 0)
-				{
-					tmp *= -1;
-				}
-				unsigned int tmp2 = tmp;
-				if (tmp2 < shortest)
-				{
-					shortest = tmp2;
-				}
+				shortest = tmp;
 			}
 		}
+		// for (size_t i = 0; i < this->_content.size(); i++)
+		// {
+		// 	for (size_t j = i + 1; j < this->_content.size(); j++)
+		// 	{
+		// 		ssize_t tmp = this->_content[i] - this->_content[j];
+		// 		if (tmp < 0)
+		// 		{
+		// 			tmp *= -1;
+		// 		}
+		// 		unsigned int tmp2 = tmp;
+		// 		if (tmp2 < shortest)
+		// 		{
+		// 			shortest = tmp2;
+		// 		}
+		// 	}
+		// }
 		return(shortest);
 	}
 }
@@ -95,22 +111,33 @@ unsigned int Span::longestSpan() const
 	else
 	{
 		unsigned int	longest = 0;
-		for (size_t i = 0; i < this->_content.size(); i++)
+		std::sort(this->_content.begin(), this->_content.end());
+		unsigned int	tmp;
+		for (size_t i = 0; i < this->_content.size() - 1; i++)
 		{
-			for (size_t j = i + 1; j < this->_content.size(); j++)
+			tmp = this->_content[i + 1] - this->_content[i];
+			std::cout << this->_content[i] << "-" << this->_content[i + 1] << std::endl;
+			if (tmp > longest)
 			{
-				ssize_t tmp = this->_content[i] - this->_content[j];
-				if (tmp < 0)
-				{
-					tmp *= -1;
-				}
-				unsigned int tmp2 = tmp;
-				if (tmp2 > longest)
-				{
-					longest = tmp2;
-				}
+				longest = tmp;
 			}
 		}
+		// for (size_t i = 0; i < this->_content.size(); i++)
+		// {
+		// 	for (size_t j = i + 1; j < this->_content.size(); j++)
+		// 	{
+		// 		ssize_t tmp = this->_content[i] - this->_content[j];
+		// 		if (tmp < 0)
+		// 		{
+		// 			tmp *= -1;
+		// 		}
+		// 		unsigned int tmp2 = tmp;
+		// 		if (tmp2 > longest)
+		// 		{
+		// 			longest = tmp2;
+		// 		}
+		// 	}
+		// }
 		return(longest);
 	}
 }
