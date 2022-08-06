@@ -32,6 +32,7 @@ Span& Span::operator =(const Span& copi)
 	// 	this->_content[i] = copi.getelement(i);
 	// }
 	this->_content = copi._content;
+	return (*this);
 }
 
 void	Span::addNumber(int ind)
@@ -65,18 +66,19 @@ unsigned int Span::shortestSpan() const
 	else
 	{
 		unsigned int	shortest = UINT_MAX;
-		for (int i = 0; i < this->_content.size(); i++)
+		for (size_t i = 0; i < this->_content.size(); i++)
 		{
-			for (int j = i + 1; j < this->_content.size(); j++)
+			for (size_t j = i + 1; j < this->_content.size(); j++)
 			{
-				int tmp = this->_content[i] - this->_content[j];
+				ssize_t tmp = this->_content[i] - this->_content[j];
 				if (tmp < 0)
 				{
 					tmp *= -1;
 				}
-				if (tmp < shortest)
+				unsigned int tmp2 = tmp;
+				if (tmp2 < shortest)
 				{
-					shortest = tmp;
+					shortest = tmp2;
 				}
 			}
 		}
@@ -93,18 +95,19 @@ unsigned int Span::longestSpan() const
 	else
 	{
 		unsigned int	longest = 0;
-		for (int i = 0; i < this->_content.size(); i++)
+		for (size_t i = 0; i < this->_content.size(); i++)
 		{
-			for (int j = i + 1; j < this->_content.size(); j++)
+			for (size_t j = i + 1; j < this->_content.size(); j++)
 			{
-				int tmp = this->_content[i] - this->_content[j];
+				ssize_t tmp = this->_content[i] - this->_content[j];
 				if (tmp < 0)
 				{
 					tmp *= -1;
 				}
-				if (tmp > longest)
+				unsigned int tmp2 = tmp;
+				if (tmp2 > longest)
 				{
-					longest = tmp;
+					longest = tmp2;
 				}
 			}
 		}

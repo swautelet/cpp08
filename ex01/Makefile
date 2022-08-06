@@ -2,7 +2,7 @@ SRC = Span.cpp main.cpp
 NAME = template
 CPPFLAGS = -Werror -Wextra -Wall -std=c++98
 OBJ=$(SRC:%.cpp=%.o)
-HEADER= Array.hpp
+HEADER= Span.hpp
 
 all : $(NAME)
 
