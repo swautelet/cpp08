@@ -5,13 +5,15 @@ int main()
 {
 	const unsigned int size = 10;
 	std::srand(time(NULL));
+	int	searched = std::rand() % 10;
+	std::cout << "For this test i'll search the number " << searched << std::endl << std::endl;
 	std::array<int, size> test;
 	for (unsigned int i = 0; i < size; i++)
 	{
 		test[i] = std::rand() % 10;
 		std::cout << "pos " << i << " initialized with " << test[i] << std::endl;
 	}
-	int res = easyfind(test, 5);
+	int res = easyfind(test, searched);
 	if (res == -1)
 	{
 		std::cout << "Number not found" << std::endl;
