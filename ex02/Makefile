@@ -1,8 +1,8 @@
-SRC = Span.cpp main.cpp
+SRC = main.cpp
 NAME = template
 CPPFLAGS = -Werror -Wextra -Wall -std=c++98
 OBJ=$(SRC:%.cpp=%.o)
-HEADER= Array.hpp
+HEADER= MutantStack.hpp
 
 all : $(NAME)
 

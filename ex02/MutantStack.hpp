@@ -3,11 +3,62 @@
 
 #include <iostream>
 #include <stack>
-template <class T>
-class MutantStack: public std::stack<T>{
+#include <deque>
+
+template <class T, class container = std::deque<T> >
+class MutantStack: public std::stack<T>
+{
 	public:
-	
+	typedef typename container::iterator iterator;
+	// template <class Category,              // iterator::iterator_category
+    //       class T,                     // iterator::value_type
+    //       class Distance = ptrdiff_t,  // iterator::difference_type
+    //       class Pointer = T*,          // iterator::pointer
+    //       class Reference = T&         // iterator::reference
+    //       > class iterator;
+		MutantStack(){
+			std::stack();
+		}
+		~MutantStack(){
+			std::~stack();
+		}
+		MutantStack(const MutantStack& copi){
+			std::stack(copi);
+		}
+		Mutanstack& operator =(const MutantStack& copi){
+			*this = copi;
+			return *this;
+		}
+		iterator begin()
+		{
+			return this->c.begin();
+		}
+		iterator end()
+		{
+			return this->c.end();
+		}
+		iterator rbegin(){
+			return this->c.rbeging();
+		}
+		iterator rend(){
+			return this->c.rend();
+		}
+		const iterator begin()
+		{
+			return this->c.begin();
+		}
+		const iterator end()
+		{
+			return this->c.end();
+		}
+		const iterator rbegin(){
+			return this->c.rbeging();
+		}
+		const iterator rend(){
+			return this->c.rend();
+		}
 	private:
+
 	protected:
 };
 
