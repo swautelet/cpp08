@@ -17,13 +17,12 @@ class MutantStack: public std::stack<T>
     //       class Reference = T&         // iterator::reference
     //       > class iterator;
 		MutantStack(){
-			std::stack<T>();
+			// std::stack<T>();
 		}
 		~MutantStack(){
 		}
 		MutantStack(const MutantStack<T>& copi){
 			std::stack<T>::operator=(copi);
-			// (void) copi;
 		}
 		MutantStack& operator =(const MutantStack<T>& copi){
 			std::stack<T>::operator=(copi);
