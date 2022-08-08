@@ -17,15 +17,14 @@ class MutantStack: public std::stack<T>
     //       class Reference = T&         // iterator::reference
     //       > class iterator;
 		MutantStack(){
-			std::stack();
+			std::stack<T>();
 		}
 		~MutantStack(){
-			std::~stack();
 		}
-		MutantStack(const MutantStack& copi){
-			std::stack(copi);
+		MutantStack(const MutantStack<T>& copi){
+			(void) copi;
 		}
-		Mutanstack& operator =(const MutantStack& copi){
+		MutantStack& operator =(const MutantStack<T>& copi){
 			*this = copi;
 			return *this;
 		}
@@ -43,20 +42,20 @@ class MutantStack: public std::stack<T>
 		iterator rend(){
 			return this->c.rend();
 		}
-		const iterator begin()
-		{
-			return this->c.begin();
-		}
-		const iterator end()
-		{
-			return this->c.end();
-		}
-		const iterator rbegin(){
-			return this->c.rbeging();
-		}
-		const iterator rend(){
-			return this->c.rend();
-		}
+		// const iterator begin()
+		// {
+		// 	return this->c.begin();
+		// }
+		// const iterator end()
+		// {
+		// 	return this->c.end();
+		// }
+		// const iterator rbegin(){
+		// 	return this->c.rbeging();
+		// }
+		// const iterator rend(){
+		// 	return this->c.rend();
+		// }
 	private:
 
 	protected:
