@@ -2,7 +2,14 @@
 # define EASYFIND_HPP
 
 #include <iostream>
+#include <exception>
 
+class NumbernotFound:public std::exception{
+	public:
+	const char* what() const throw(){
+		return "Number not found!";
+	}
+};
 template<class T>
 int	easyfind(T inclass, int ind){
 	for (unsigned long int i = 0; i < inclass.size(); i++)
@@ -12,7 +19,7 @@ int	easyfind(T inclass, int ind){
 			return i;
 		}
 	}
-	return -1;
+	throw(NumbernotFound());
 };
 
 #endif

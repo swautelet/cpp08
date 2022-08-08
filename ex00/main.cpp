@@ -13,14 +13,13 @@ int main()
 		test[i] = std::rand() % 10;
 		std::cout << "pos " << i << " initialized with " << test[i] << std::endl;
 	}
-	int res = easyfind(test, searched);
-	if (res == -1)
+	try
 	{
-		std::cout << "Number not found" << std::endl;
+		int res = easyfind(test, searched);
+		std::cout << "Number found in pos " << res << ", it was the number " << searched << std::endl;
 	}
-	else
+	catch(const std::exception& e)
 	{
-		std::cout << "Number found in pos " << res << ", it is " << test[res] << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-	// test with other type of container 
 }
