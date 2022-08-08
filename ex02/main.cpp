@@ -13,10 +13,26 @@ int main()
 	MutantStack<int>::iterator it = mstack.begin(); MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
+	std::cout << "Stack mstack" << std::endl;
 	while (it != ite) {
 		std::cout << "Number in the stack is " << *it << std::endl;
 	++it; }
 	std::stack<int> s(mstack);
 	s = mstack;
+	MutantStack<int> tester(mstack);
+	it = tester.begin();
+	ite = tester.end();
+	std::cout << "Stack tester" << std::endl;
+	while (it != ite) {
+		std::cout << "Number in the stack is " << *it << std::endl;
+	++it; }
+	MutantStack<int> second;
+	second = mstack;
+	it = second.begin();
+	ite = second.end();
+	std::cout << "Stack second" << std::endl;
+	while (it != ite) {
+		std::cout << "Number in the stack is " << *it << std::endl;
+	++it; }
 	return 0;
 }

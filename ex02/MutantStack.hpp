@@ -22,10 +22,11 @@ class MutantStack: public std::stack<T>
 		~MutantStack(){
 		}
 		MutantStack(const MutantStack<T>& copi){
-			(void) copi;
+			std::stack<T>::operator=(copi);
+			// (void) copi;
 		}
 		MutantStack& operator =(const MutantStack<T>& copi){
-			*this = copi;
+			std::stack<T>::operator=(copi);
 			return *this;
 		}
 		iterator begin()
