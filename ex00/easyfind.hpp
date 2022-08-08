@@ -3,6 +3,10 @@
 
 #include <iostream>
 #include <exception>
+#include <algorithm>
+#include <map>
+#include <deque>
+#include <vector>
 
 class NumbernotFound:public std::exception{
 	public:
@@ -11,15 +15,23 @@ class NumbernotFound:public std::exception{
 	}
 };
 template<class T>
-int	easyfind(T inclass, int ind){
-	for (unsigned long int i = 0; i < inclass.size(); i++)
+typename T::iterator	easyfind(T inclass, int ind){
+	// for (unsigned long int i = 0; i < inclass.size(); i++)
+	// {
+	// 	if (inclass[i] == ind)
+	// 	{
+	// 		return i;
+	// 	}
+	// }
+	typename T::iterator res = find(inclass.begin(), inclass.end(), ind);
+	if (res == inclass.end())
 	{
-		if (inclass[i] == ind)
-		{
-			return i;
-		}
+		throw(NumbernotFound());
 	}
-	throw(NumbernotFound());
+	else
+	{
+		return res;
+	}
 };
 
 #endif
