@@ -42,20 +42,20 @@ class MutantStack: public std::stack<T>
 		iterator rend(){
 			return this->c.rend();
 		}
-		// const iterator begin()
-		// {
-		// 	return this->c.begin();
-		// }
-		// const iterator end()
-		// {
-		// 	return this->c.end();
-		// }
-		// const iterator rbegin(){
-		// 	return this->c.rbeging();
-		// }
-		// const iterator rend(){
-		// 	return this->c.rend();
-		// }
+		const iterator cbegin()
+		{
+			return this->c.begin();
+		}
+		const iterator cend()
+		{
+			return this->c.end();
+		}
+		const iterator crbegin(){
+			return this->c.rbeging();
+		}
+		const iterator crend(){
+			return this->c.rend();
+		}
 	private:
 
 	protected:
