@@ -16,7 +16,7 @@ int main()
 	try
 	{
 		std::vector<int>::iterator res = easyfind(vect, searched);
-		std::cout << "Number found in pos " << *res << ", it was the number " << searched << std::endl;
+		std::cout << "Number found it was the number " << *res << std::endl;
 	}
 	catch(const std::exception& e)
 	{
